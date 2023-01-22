@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.profile.app.jwtfilter.JwtFilter"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpMethod"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+    <fullyQualifiedTypeName name="io.javabrains.cart.security.service.MyUserDetails"/>
+    <fullyQualifiedTypeName name="io.javabrains.cart.jwtutil.JwtUtil"/>
+    <fullyQualifiedTypeName name="com.orderservice.app.security.service.MyUserDetails"/>
+    <fullyQualifiedTypeName name="com.product.security.service.MyUserDetails"/>
+    <fullyQualifiedTypeName name="com.wallet.api.security.service.MyUserDetails"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.http.SessionCreationPolicy"/>
+    <fullyQualifiedTypeName name="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"/>
+</qualifiedTypeNameHistroy>

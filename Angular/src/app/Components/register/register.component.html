@@ -1,0 +1,189 @@
+<br>
+
+<section>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-10">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body ">
+            <div class="row justify-content-center">
+              <div class="col-md-2 col-lg-8 col-xl-5 order-lg-1">
+
+                <p class="text-center h1 fw-bold text-signup">Sign up</p>
+                <br>
+
+                <form class="mx-1 mx-md-4" [formGroup]="registrationForm" (ngSubmit)="onRegistrationFormSubmit()">
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-1">
+                      <input type="text" id="form3Example1c" class="form-control" formControlName="name"/>
+
+                      <label class="form-label" for="form3Example1c">Name</label>
+                      <span class="text-color" *ngIf="registrationForm.controls['name'].touched && registrationForm.controls['name'].invalid" >
+                      <span  *ngIf="registrationForm.hasError('required',['name'])" style="margin-left: 43%;">
+                        Name is required*</span>
+                      <span  *ngIf="registrationForm.hasError('minlength', ['name'])" style="margin-left: 13%;">
+                        Name must be atleast 3 letters*</span>
+                      </span>
+                  </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="email" id="form3Example3c" class="form-control" formControlName="email"/>
+                      <label class="form-label" for="form3Example3c">Email</label>
+                      <span class="text-color" *ngIf="registrationForm.controls['email'].touched && registrationForm.controls['email'].invalid" >
+                        <span  *ngIf="registrationForm.hasError('required',['email'])" style="margin-left: 45%;">
+                          Email is required*</span>
+                          <span  *ngIf="registrationForm.hasError('email', ['email'])" style="margin-left: 45%;">
+                            Enter valid email*</span>
+                        </span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="number" id="form3Example9c" class="form-control" formControlName="mobileNo" />
+                      <label class="form-label" for="form3Example9c">MobileNo</label>
+                     <span class="text-color" *ngIf="registrationForm.controls['mobileNo'].touched && registrationForm.controls['mobileNo'].invalid">
+                      <span  *ngIf="registrationForm.hasError('required',['mobileNo'])" style="margin-left: 23%;">
+                        MobileNo is required*</span>
+                      <span  *ngIf="registrationForm.hasError('min',['mobileNo']) || registrationForm.hasError('max',['mobileNo'])" style="margin-left: 28%;">
+                        Enter valid MobNo*</span>
+                     </span>
+
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="date" id="form3Example4c" class="form-control" formControlName="dateOfBirth" />
+                      <label class="form-label" for="form3Example4c">Date of Birth</label>
+                    </div>
+                  </div>
+
+                  &nbsp;&nbsp;&nbsp;
+                  <label for="">Gender: </label>&nbsp;&nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male" formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female" formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                  </div>
+<br><br>
+
+                  &nbsp;&nbsp;&nbsp;
+                  <label for="">Role: </label>&nbsp;&nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="inlineRadio3" value="Customer" formControlName="role">
+                    <label class="form-check-label" for="inlineRadio3">Customer</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="inlineRadio4" value="Merchant" formControlName="role">
+                    <label class="form-check-label" for="inlineRadio4">Merchant</label>
+                  </div>
+                  <br><br>
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="password" id="form3Example5c" class="form-control" formControlName="password"/>
+                      <label class="form-label" for="form3Example5c">Password</label>
+                      <span class="text-color" *ngIf="registrationForm.controls['password'].touched && registrationForm.controls['password'].invalid">
+                        <span  *ngIf="registrationForm.hasError('required',['password'])" style="margin-left: 26%;">
+                          Password is required*</span>
+                        <span *ngIf="registrationForm.hasError('minlength',['password']) || registrationForm.hasError('maxlength',['password'])">
+                        <br /> <span style="margin-left: 10%;">Password must be 6-15 characters long*</span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>Address :- </div>
+                  <!-- Text input -->
+                  <div class="row mb-2">
+                    <div class="col">
+                      <div class="form-outline mb-3">
+                        <input type="number" id="form6Example12" class="form-control" value="{{user.address.houseNumber}}" formControlName="houseNumber" />
+                        <label class="form-label" for="form6Example21">House Number</label>
+                        <label class="text-color" *ngIf="registrationForm.controls['houseNumber'].touched && registrationForm.controls['houseNumber'].invalid" style="margin-left: 5px;">**</label>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-outline mb-3">
+                        <input type="text" id="form6Example212" class="form-control" value="{{user.address.streetName}}" formControlName="streetName"/>
+                        <label class="form-label" for="form6Example212">Street Name</label>
+                        <label class="text-color" *ngIf="registrationForm.controls['streetName'].touched && registrationForm.controls['streetName'].invalid" style="margin-left: 5px;">**</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-2">
+                    <div class="col">
+                      <div class="form-outline mb-3">
+                        <input type="text" id="form6Example412" class="form-control" value="{{user.address.colonyName}}" formControlName="colonyName"/>
+                        <label class="form-label" for="form6Example412">Colony Name</label>
+                        <label class="text-color" *ngIf="registrationForm.controls['colonyName'].touched && registrationForm.controls['colonyName'].invalid" style="margin-left: 5px;">**</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline mb-3">
+                        <input type="text" id="form6Example465" class="form-control"  value="{{user.address.city}}" formControlName="city" />
+                        <label class="form-label" for="form6Example465">City</label>
+                        <label class="text-color" *ngIf="registrationForm.controls['city'].touched && registrationForm.controls['city'].invalid" style="margin-left: 5px;">**</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col">
+                  <div class="form-outline mb-3">
+                    <input type="text" id="form6Example344" class="form-control" value="{{user.address.state}}" formControlName="state"  />
+                    <label class="form-label" for="form6Example344">State</label>
+                    <label class="text-color" *ngIf="registrationForm.controls['state'].touched && registrationForm.controls['state'].invalid" style="margin-left: 5px;">**</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-outline mb-3">
+                    <input type="number" id="form6Example3214" class="form-control" value="{{user.address.pinCode}}" formControlName="pinCode"  />
+                    <label class="form-label" for="form6Example3214">PinCode</label>
+                    <label class="text-color" *ngIf="registrationForm.controls['pinCode'].touched && registrationForm.controls['pinCode'].invalid" style="margin-left: 5px;">**</label>
+                  </div>
+                </div>
+              </div>
+
+                  <!-- <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c2" />
+                    <label class="form-check-label" for="form2Example3c2">
+                      I agree all statements in <a href="#!">Terms of service</a>
+                    </label>
+                  </div> -->
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="!registrationForm.valid">Register</button>
+                  </div>
+                </form>
+
+                <div>
+                  <p style="margin-left: 10%;">Already have an account? &nbsp;<a href="javascript.void(0)" routerLink="/login" >login here</a></p>
+                </div>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

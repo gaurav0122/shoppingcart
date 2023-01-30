@@ -1,0 +1,15 @@
+#loginui{
+  background-color: aliceblue;
+}
+
+.validation-message{
+  margin-top: 0.7%;
+  margin-left: 5%;
+  color: red;
+  font-weight: 550;
+  font-size: 15px;
+}
+
+.login-button-align{
+  margin-left: 33%;
+}

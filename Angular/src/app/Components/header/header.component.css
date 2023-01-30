@@ -1,0 +1,12 @@
+/* .customIconSize {
+  font-size: 20%;
+  height: 3% ;
+  width: 3% ;
+} */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdownMenuLink:active .dropdown-menu{
+  display: flex;
+}

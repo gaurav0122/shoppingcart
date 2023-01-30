@@ -1,0 +1,115 @@
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #3f7ef3;">
+  <div class="container-fluid">
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class="navbar-brand" href="javascript.void(0)" routerLink="">Shoppito
+    <img src="../../../assets/images/shopping cart.png" alt="image not availabe" style="height:40px ; width: 30px;"/>
+   </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" tabindex="-1" ></a>
+        </li>
+      </ul>
+
+      <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="searchItems()">
+        <input class="form-control me-3" type="search" formControlName="searchTitle" placeholder="Search your items here" aria-label="Search">
+        <button class="btn btn-secondary" [disabled]="!searchForm.valid" type="submit">Search</button>
+      </form>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <a href="javascript.void(0)" routerLink="login">
+      <button class="btn btn-success" *ngIf="!loggedIn" >Login</button>
+    </a>
+
+    <div *ngIf="loggedIn && isMerchant">
+    <a href="javascript.void(0)" routerLink="postproduct">
+      <button class="btn btn-success"  >Post Product</button>
+    </a>
+&nbsp;&nbsp;
+</div>
+    <div class="dropdown" *ngIf="loggedIn">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Hi, {{userName1}}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="">
+        <li><a class="dropdown-item" href="javascript.void(0)" routerLink="/profile">Profile</a></li>
+        <li><a class="dropdown-item" *ngIf="!isMerchant" href="javascript.void(0)" routerLink="/wallet">Wallet</a></li>
+        <li><a class="dropdown-item" href="javascript.void(0)" routerLink="/myorders">My-Orders</a></li>
+        <li><a class="dropdown-item" href="javascript.void(0)" routerLink="/" (click)="logOut()">Log-out</a></li>
+      </ul>
+    </div>
+
+      &nbsp; &nbsp;&nbsp;&nbsp;
+
+
+    <!-- <button class="btn btn-success" class="border rounded" style="border: 2px solid black"  type="button">Cart -->
+      <span *ngIf="!isMerchant">
+      <a href="javascript.void(0)"  routerLink="/cart" style="margin-top: 0.5%;">
+        <span style="color: white;"><mat-icon [matBadge]=cartItem matBadgeColor="accent"
+          MatBadgeSize="medium" >add_shopping_cart</mat-icon></span>
+        <span style="font-size: 130%;  color: white;" > Cart</span>
+
+        </a>
+      </span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <!-- </button> -->
+    </div>
+  </div>
+</nav>
+
+<div style="background-color: rgba(231, 115, 206, 0.418);">
+
+
+
+
+  <span style=" margin-left: 3%;">
+    <span><a mat-button class="dropdown-toggle" style="color: rgb(0, 0, 0); " data-bs-toggle="dropdown" id="dropdownMenuLink2" aria-expanded="false" >All Categories&nbsp;</a>
+
+       <ul class="dropdown-menu" style="background-color : whitesmoke;"  aria-labelledby="dropdownMenuLink2" >
+        <li *ngFor="let c of categories" >
+          <a class="dropdown-item" href="javascript.void(0)" routerLink="/products/{{c.categoryName}}">{{c.categoryName}}</a>
+        </li>
+      </ul>
+    </span>
+
+
+    <span *ngFor="let c of categories | slice:0:5" style="margin-right: 4%; margin-left: 4%;">
+    <div class="dropdown  d-inline-block">
+    <a mat-button routerLink="/products/{{c.categoryName}}"  id="dropdownMenuLink"  >
+      <!-- (mouseenter)="getProductTypes(c.id)" -->
+      <span style="color: rgb(0, 0, 0); font-size: 110%;">{{c.categoryName}}</span></a>
+
+
+      <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li *ngFor="let p of productTypes"><a class="dropdown-item" href="#">{{p}}</a></li>
+      </ul> -->
+    </div>
+
+      <!-- <a class="btn btn-secondary"  role="button" id="dropdownMenuLink"  data-bs-toggle="dropdown" aria-expanded="false" >
+        Dropdown link
+      </a> -->
+
+  </span>
+  </span>
+  <br>
+
+  </div>
+
+

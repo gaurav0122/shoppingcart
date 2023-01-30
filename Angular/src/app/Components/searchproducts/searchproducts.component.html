@@ -1,0 +1,62 @@
+
+<div *ngIf="loading">
+  <br/><br/><br/>
+<div class="spinner-border" style="margin-left: 45%;" role="status" >
+  <span class="visually-hidden">Loading...</span>
+</div>
+<br/><br/><br/>
+</div>
+
+
+<div *ngIf="!loading && isEmpty" style="margin-left: 4%;">
+  <br />
+<h2>No results Found for "{{searchtitle}}"</h2>
+<p>Check the spelling, Try a more general term or look up specific brand...</p>
+<br />
+<br />
+<h6>You might try</h6>
+<a href="searchproducts/Mobiles"><p>Mobiles</p></a>
+
+<a href="searchproducts/Mobiles"><p>T shirt</p></a>
+<a href="searchproducts/Mobiles"><p>Trousers</p></a>
+<a href="searchproducts/Mobiles"><p>Electronics</p></a>
+
+</div>
+
+
+<br />
+<div class="row" style="margin-top: 0.2%; margin-right: 2%; margin-left: 1%" *ngIf="!loading && !isEmpty">
+
+  <div class="col-sm-4" *ngFor="let p of products">
+    <a href="javascript.void(0)" routerLink="/products/details/{{ p.productid }}">
+      <div class="card" style="width: 25rem; height: 210px;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-5">
+              <div *ngFor="let pi of p.image | slice: 0:1" >
+                <img src="{{pi}}" class="img-fluid rounded mx-auto d-block" alt="" style="max-height: 170px;" />
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div style="margin-left: 3%;">
+                <h5 class="card-title">{{ p.productName }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ p.productType }}</h6>
+                <p class="card-text" style="font-size: 15px;">{{ p.category.categoryName }}</p>
+                <span>{{ p.price | currency: "Rs. " }}</span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+      </a>
+      </div>
+
+</div>
+
+
+
+
+
+
+

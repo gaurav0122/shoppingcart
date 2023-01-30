@@ -1,0 +1,90 @@
+
+<div style="margin-top: 4px;">
+<div class="row">
+  <div class="col-lg-6">
+    <img src="https://static.vecteezy.com/system/resources/previews/001/834/925/non_2x/smartphone-with-shopping-cart-and-wallet-money-free-vector.jpg" alt=""
+      style="height: 350px; width:103%">
+    </div>
+<div class="col-lg-6">
+
+<div class="card" style="height: 350px; width: 90%;">
+
+  <div class="card-body">
+
+    <h1 class="card-title-font" >
+      <span style="color: red;">E-</span>Wallet</h1>
+    <h6 class="balance-font"> <span style="color: blue;">Balance:- </span>{{wallet.currentBalance | currency:"Rs. "}}</h6>
+
+<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-info rounded-circle border border-secondary border-2"
+      data-bs-toggle="modal" data-bs-target="#addMoneyModal">Add <br />&nbsp; Money&nbsp;&nbsp;  </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-info rounded-circle border border-secondary border-2" (click)="showStatements()">Show <br /> &nbsp; Statement&nbsp; </button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<br />
+<div *ngIf="showStatement">
+<div style="margin-left:25px ; margin-right: 25px;">
+
+<div class="table-responsive">
+
+    <table class="table caption-top table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Sr.No</th>
+          <th scope="col">Statement Id</th>
+          <th scope="col">Transaction Type</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Date</th>
+          <th scope="col">Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of statements; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{s.statementId}}</td>
+          <td>{{s.transactionType}}</td>
+          <td>{{s.amount}}</td>
+          <td>{{s.date}}</td>
+          <td>Transaction Complete</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addMoneyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Money</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <br />
+      <form [formGroup]="AddAmountForm" (ngSubmit)="addMoney()">
+      <div class="modal-body">
+        <h6>Please Enter the amount you want to add</h6>
+        <div style="margin-right: 100px;">
+          <input type="number" class="form-control" formControlName="amount" placeholder="Enter the Amount">
+        <span class="error-message" *ngIf="AddAmountForm.controls['amount'].touched && AddAmountForm.controls['amount'].invalid">Please Enter the amount between 10 to 10000</span>
+        </div>
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!AddAmountForm.valid">Add Money</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

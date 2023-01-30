@@ -1,0 +1,69 @@
+
+<div *ngIf="loading">
+  <br/><br/><br/>
+<div class="spinner-border" style="margin-left: 45%;" role="status" >
+  <span class="visually-hidden">Loading...</span>
+</div>
+<br/><br/><br/><br/><br/><br/>
+</div>
+
+<div *ngIf="!loading">
+
+<div style="margin-left: 3%; margin-top: 0.2%;">
+  <span>
+    <button mat-button > Sort-By </button>
+  &nbsp;  &nbsp;  &nbsp;&nbsp;
+
+    <button mat-button (click)="sortLowToHigh()">
+    Price--Low to High
+  </button>
+
+  &nbsp;  &nbsp;  &nbsp;&nbsp;
+
+    <button mat-button  (click)="sortHightoLow()">
+    Price--High to Low
+  </button>
+</span>
+</div>
+
+<div class="row" style="margin-top: 0.2%; margin-right: 2%; margin-left: 1%">
+  <div class="col-sm-4" *ngFor="let p of products | paginate:{
+                                                    itemsPerPage:tableSize,
+                                                    currentPage:page,
+                                                    totalItems:count};
+                                                    let i = index">
+    <a href="javascript.void(0)" routerLink="/products/details/{{ p.productid }}">
+      <div class="card" style="width: 25rem; height: 210px;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-5">
+              <div *ngFor="let pi of p.image | slice: 0:1" >
+                <img src="{{pi}}" class="img-fluid rounded mx-auto d-block" alt="" style="max-height: 170px;" />
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div style="margin-left: 3%;">
+                <h5 class="card-title" >{{ p.productName }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ p.productType }}</h6>
+                <p class="card-text" style="font-size: 15px;">{{ p.category.categoryName }}</p>
+                <span>{{ p.price | currency: "Rs. " }}</span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+      </a>
+      </div>
+
+  </div>
+  <div style="text-align: center;">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onProductDataChange($event)">
+
+    </pagination-controls>
+  </div>
+
+</div>

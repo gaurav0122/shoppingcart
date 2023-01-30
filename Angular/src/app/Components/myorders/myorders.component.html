@@ -1,0 +1,135 @@
+
+<div *ngIf="loading">
+  <br/><br/><br/>
+<div class="spinner-border" style="margin-left: 45%;" role="status" >
+  <span class="visually-hidden">Loading...</span>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+
+<div *ngIf="!loading">
+<br />
+<div class="row">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10">
+    <div *ngFor="let o of orders">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-lg-8">
+          <h6>OrderId: {{o.orderId}}</h6>
+          <span>Deliver to:-</span> {{ o.address.houseNumber }},&nbsp;
+              {{ o.address.colonyName }},&nbsp;{{
+                o.address.streetName
+              }},&nbsp;{{ o.address.city }},&nbsp;
+              {{ o.address.state }},&nbsp;{{ o.address.pinCode }} <br />
+              Order status :- {{ o.orderStatus }} <br />
+              Order Date :- {{ o.orderDate }} <br />
+
+            </div>
+            <div class="col-lg-4" >
+              <h4 style="margin-top: 10px;">Total Price: {{o.amountPaid | currency: "Rs. " }}</h4>
+             <span> Mode of Payment :- {{ o.modeOfPayment }}</span>
+             <br />
+            <button mat-button (click)="downloadInvoice(o.orderId)">Download Invoice</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div *ngFor="let i of o.items">
+        <div class="card">
+          <div class="row">
+            <div class="col-lg-3"><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="javascript.void(0)" routerLink="/products/details/{{i.productId}}">
+              <img src="{{ i.productImg }}" style="height: 150px; width: 200px" alt="img load error"/>
+            </a>
+              <br /><br />
+              </div>
+            <div class="col-lg-6">
+              <br>
+              <h3>{{ i.productName }} <br /></h3>
+
+              <div style="margin-top: 15px;">
+             <h6> {{ i.price | currency: "Rs. " }}</h6>
+              </div>
+              <div style="margin-top: 13px;">
+              Quantity :- {{ i.quantity }} <br />
+            </div>
+
+              <br>
+              <br>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+              <br />
+              <br />
+
+              <button type="button" (click)="setProductId(i.productId)" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Post Review</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br />
+      <hr />
+      <br />
+
+    </div>
+  </div>
+  <div class="col-lg-1"></div>
+</div>
+</div>
+
+<div>
+  <!-- Modal -->
+  <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+          <h5 class="modal-title" id="exampleModalLabel">Post review form</h5>
+          <p>Share your thoughts about the product</p>
+        </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="reviewForm" (submit)="onsubmit()">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div>
+              <h5>Ratings : </h5>
+              <input type="range" min="1" max="5" formControlName="rating" (change)="value()">
+              <span>&nbsp;&nbsp;{{rat}}</span>
+            </div>
+            <br />
+            <div class="row mb-3">
+              <div class="form-outline">
+                <input type="text" id="form6Example1" class="form-control" formControlName="reviewTitle" />
+                <label class="form-label" for="form6Example1">Review Title</label>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="form-outline">
+                <textarea  id="form6Example1" class="form-control" placeholder="Share your thoughts about the product" formControlName="reviewText" >
+                  </textarea>
+                <label class="form-label" for="form6Example1">Review Text</label>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary btn-block mb-4" data-bs-dismiss="modal" aria-label="Close">
+               Post-Review
+              </button>
+              </div>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+      </div>
+    </div>
+  </div>
+</div>

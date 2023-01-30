@@ -1,0 +1,247 @@
+
+<div *ngIf="loading">
+  <br/><br/><br/>
+<div class="spinner-border" style="margin-left: 45%;" role="status" >
+  <span class="visually-hidden">Loading...</span>
+</div>
+<br/><br/><br/>
+</div>
+
+<div *ngIf="!loading">
+
+<div style="background-color: white;">
+<br>
+<div class="row" >
+  <div class="col-sm-1" >
+    <br />
+    <div *ngFor="let img of product.image" style="margin-left: 15px; margin-bottom: 15px;">
+
+     <table class="border border-primary" >
+
+      <tr>
+        <td style="width: 45px; height:45px" id="imgtable">
+ <a href="javascript:void(0);">
+      <img src={{img}} class="img-fluid mx-auto d-block " style=" height:35px" alt="xyz" (mouseenter)="showImg(img)" />
+      </a>
+    </td>
+    </tr>
+    </table>
+      <br />
+
+    </div>
+  </div>
+  <div class="col-sm-3" >
+
+<!-- <div  *ngFor="let img of product.image"> -->
+<br />
+  <div style="height: 355px; vertical-align: middle;">
+  <img src={{imageurl}} class="img-fluid rounded mx-auto d-block " style=" max-height: 350px; " alt="xyz" >
+
+</div>
+<br />
+<div>
+<hr />
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning" style="margin-left: 23%;" (click)="addItemToCart(product.productid)">Add to Cart</button>
+</div>
+  <br />
+  <br />
+<!-- </div> -->
+</div>
+<div class="col-sm-1"></div>
+<div class="col-sm-6">
+    <h2>{{product.productName}}</h2>
+    <span *ngIf="ratingStat >=4.5">
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+        </span>
+       <span *ngIf="ratingStat>=3.5 && ratingStat<4.5">
+        <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 4);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+       <span *ngIf="ratingStat>=2.5 && ratingStat<3.5">
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+       <span *ngIf="ratingStat>=1.5 && ratingStat<2.5">
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+       <span *ngIf="ratingStat<1.5 ">
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+    <span style="margin-left: 3%; ">{{totalRatings}} total Ratings</span>
+    <br />
+    <span>{{product.productType}}</span><br>
+    <br>
+    <h4>Price: {{product.price | currency : 'Rs. ' : 'symbol'}}</h4>
+
+
+
+    <h6>Seller:- {{product.merchantName}}</h6><br>
+
+    <h6>Description :-</h6>
+    <span>{{product.description}}</span><br><br>
+
+
+    <h6>Specifications:</h6>
+    <div *ngFor="let s of product.specification | keyvalue">
+      <!-- <span>{{s.key}}</span>&nbsp; : &nbsp;<span>{{s.value}}</span> -->
+      <table class="table table-sm">
+        <tbody>
+          <tr>
+            <th scope="row table-light" style="width: 30%; font-weight: 500;">{{s.key}}</th>
+            <td style="width: 2%;">:</td>
+            <td style="width: 68%;">{{s.value}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+</div>
+</div>
+<hr />
+<div class="row">
+  <h3 style="margin-left: 2%;"> Customer Reviews</h3>
+  <div class="col-lg-4" style="margin-left: 2%;">
+    <span *ngIf="ratingStat >=4.5">
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+        </span>
+       <span *ngIf="ratingStat>=3.5 && ratingStat<4.5">
+        <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 4);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+       <span *ngIf="ratingStat>=2.5 && ratingStat<3.5">
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+       <span *ngIf="ratingStat>=1.5 && ratingStat<2.5">
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+       <span *ngIf="ratingStat<1.5 ">
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+       </span>
+    <span style="margin-left: 3%;">{{ratingStat | number:'1.1-1' }} out of 5</span>
+    <p>{{totalRatings}} total Ratings</p>
+
+
+
+    <span>5 star </span>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <span> {{star5}}</span><br>
+    <span>4 star </span>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 4);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <span> {{star4}}</span><br>
+    <span>3 star </span> <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <span> {{star3}}</span><br>
+    <span>2 star </span> <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <span> {{star2}}</span><br>
+    <span>1 star </span> <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <mat-icon style="color: rgb(255, 255, 255);">star</mat-icon>
+    <span> {{star1}}</span><br>
+    <br />
+    <br />
+
+  </div>
+  <div class="col-lg-7">
+    <div *ngFor="let r of reviews">
+      <h4><mat-icon style="color: rgb(102, 97, 97);">account_circle</mat-icon> {{r.userName}}</h4>
+     <span *ngIf="r.ratings==5">
+     <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+       </span>
+      <span *ngIf="r.ratings==4">
+       <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 4);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      </span>
+      <span *ngIf="r.ratings==3">
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      </span>
+      <span *ngIf="r.ratings==2">
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      </span>
+      <span *ngIf="r.ratings==1">
+      <mat-icon style="color: rgb(255, 149, 41);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      <mat-icon style="color: rgb(179, 175, 175);">star</mat-icon>
+      </span>
+      <span style="font-weight: 600;">&nbsp; &nbsp;{{r.reviewTitle}}</span>
+      <p>{{r.reviewText}}</p>
+
+      <hr />
+    </div>
+  </div>
+</div>
+<br /><br /><br />
+</div>
+</div>
+

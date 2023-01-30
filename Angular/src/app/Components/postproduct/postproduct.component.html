@@ -1,0 +1,167 @@
+
+
+<div class="bgcolor">
+  <br />
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Post Product Form</h3>
+    <br />
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <!-- Text input -->
+      <div class="form-outline mb-2">
+        <input type="text" id="form6Example2" class="form-control" formControlName="productname" />
+        <label class="form-label" for="form6Example3"> &nbsp;&nbsp;Product name</label>
+      </div>
+
+      <!-- Text input -->
+      <div class="form-outline mb-2">
+        <input type="text" id="form6Example2" class="form-control" formControlName="productType" />
+        <label class="form-label" for="form6Example3"> &nbsp;&nbsp;Product Type</label>
+      </div>
+
+      <!-- Text input -->
+      <div class="form-outline mb-2">
+        <input type="number" id="form6Example4" class="form-control" formControlName="productPrice" />
+        <label class="form-label" for="form6Example4"> &nbsp;&nbsp;Product Price</label>
+      </div>
+
+      <!-- Email input -->
+      <div class="form-outline mb-3">
+
+        <select class="form-select" aria-label="Default select example" formControlName="productCategory" >
+
+          <option value="{{c.categoryName}}" *ngFor="let c of categories" > {{c.categoryName}} </option>
+        </select>
+        <label for=""> &nbsp;&nbsp;Category</label>
+      </div>
+
+      <!-- Number input -->
+      <div class="form-outline mb-2">
+        <input type="text" id="form6Example7" class="form-control" formControlName="productImage1" />
+        <label class="form-label" for="form6Example7"> &nbsp;&nbsp;Image1</label>
+      </div>
+       <!-- Number input -->
+       <div class="form-outline mb-2">
+        <input type="text" id="form6Example8" class="form-control" formControlName="productImage2"  />
+        <label class="form-label" for="form6Example8"> &nbsp;&nbsp;Image2</label>
+      </div>
+       <!-- Number input -->
+       <div class="form-outline mb-2">
+        <input type="text" id="form6Example9" class="form-control" formControlName="productImage3"  />
+        <label class="form-label" for="form6Example9"> &nbsp;&nbsp;Image3</label>
+      </div>
+       <!-- Number input -->
+       <div class="form-outline mb-2">
+        <input type="text" id="form6Example10" class="form-control" formControlName="productImage4" />
+        <label class="form-label" for="form6Example10"> &nbsp;&nbsp;Image4</label>
+      </div>
+
+      <!-- Message input -->
+      <div class="form-outline mb-2">
+        <textarea class="form-control" id="form6Example12" rows="4" formControlName="productDescription" ></textarea>
+        <label class="form-label" for="form6Example12"
+          > &nbsp;&nbsp;Description</label
+        >
+      </div>
+
+      <label for="">Enter the Specifications :</label> <br/>
+       <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-2">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example15" class="form-control" formControlName="SpecTitle1"/>
+            <label class="form-label" for="form3Example15">&nbsp;&nbsp;Specification title1</label>
+          </div>
+        </div>
+        :
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example25" class="form-control" formControlName="SpecDesc1"/>
+            <label class="form-label" for="form3Example25">&nbsp;&nbsp;Description</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-2">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example15" class="form-control" formControlName="SpecTitle2" />
+            <label class="form-label" for="form3Example15">&nbsp;&nbsp;Specification title2</label>
+          </div>
+        </div>
+        :
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example25" class="form-control" formControlName="SpecDesc2" />
+            <label class="form-label" for="form3Example25">&nbsp;&nbsp;Description</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-2">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example15" class="form-control" formControlName="SpecTitle3"/>
+            <label class="form-label" for="form3Example15">&nbsp;&nbsp;Specification title3</label>
+          </div>
+        </div>
+        :
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example25" class="form-control"  formControlName="SpecDesc3" />
+            <label class="form-label" for="form3Example25">&nbsp;&nbsp;Description</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-2">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example195" class="form-control" formControlName="SpecTitle4"/>
+            <label class="form-label" for="form3Example195">&nbsp;&nbsp;Specification title4</label>
+          </div>
+        </div>
+        :
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example285" class="form-control" formControlName="SpecDesc4" />
+            <label class="form-label" for="form3Example285">&nbsp;&nbsp;Description</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-2">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example165" class="form-control" formControlName="SpecTitle5"/>
+            <label class="form-label" for="form3Example165">&nbsp;&nbsp;Specification title5</label>
+          </div>
+        </div>
+        :
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form3Example235" class="form-control" formControlName="SpecDesc5" />
+            <label class="form-label" for="form3Example235">&nbsp;&nbsp;Description</label>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4" style="margin-left: 150px;" >
+        Post Product
+      </button>
+    </form>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+</div>
+
+
+<!-- [disabled]="!productForm.valid" -->
